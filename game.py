@@ -1,4 +1,5 @@
 from random import randint
+import time
 
 def cha():
     print("\n\n\nLets start by writing your name !\n")
@@ -34,5 +35,25 @@ def cha():
     return name, choice
 
 
+
 name, boost = cha()
+
+time.sleep(2)
+print("Stranger - Hey...")
+time.sleep(2)
+print(f"Stranger - Wake up {name} !")
+time.sleep(2)
+print(f"{name} - Ahhhh ..")
+time.sleep(3)
+print(f"{name} - What is that ?")
+time.sleep(2)
+
+
+
+
+
+
+
+
+
 
