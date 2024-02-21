@@ -1,8 +1,26 @@
 from random import randint
 import time
 import os
-
+import level
 def cha():
+    random_cha = int(input("Do you want to create a random character ? >\n1: Yes\n2: No, create your own\n>  "))
+
+    while random_cha < 1 or random_cha > 2:
+        random_cha = int(input("Select a valid option > "))
+
+    if random_cha == 1:
+        #Create a random name generator       (Future)
+        name = "Player"
+        choice = randint(1,3)
+        if choice == 1:
+            choice = "Luckier"
+        elif choice == 2:
+            choice = "Stronger"
+        else:
+            choice = "Heavier"
+
+        return name, choice
+
     print("\n\n\n\n\nLets start by writing your name !\n")
     name = str(input(">  "))
 
@@ -38,7 +56,6 @@ def cha():
 
 def tutorial():
     os.system('cls')
-    os.system('clear')
     time.sleep(2)
     print("Stranger - Hey...")
     time.sleep(2)
@@ -48,7 +65,9 @@ def tutorial():
     time.sleep(3)
     print(f"{name} - What is that ?")
     time.sleep(2)
+    #...
 
+    level.intro_level()
 
 
 
@@ -62,7 +81,12 @@ if tuto == 1:
     tutorial()
 else:
     os.system('cls')
-    os.system('clear')
+
+
+
+
+
+
 
 
 
