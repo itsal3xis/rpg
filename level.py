@@ -43,7 +43,7 @@ def intro_level():
     # Player control loop
     while True:
         move = input("Enter your move (up, down, left, right): ").lower()
-        if move == 'up' and player_pos[0] > 1:
+        if (move == 'up' or move == 'w') and player_pos[0] > 1:
             tab[player_pos[0], player_pos[1]] = '~'
             player_pos[0] -= 1
             if tab[player_pos[0], player_pos[1]] == 'I':
@@ -51,7 +51,7 @@ def intro_level():
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
             tab[player_pos[0], player_pos[1]] = spawn_point
-        elif move == 'down' and player_pos[0] < 8:
+        elif (move == 'down' or move == 's') and player_pos[0] < 8:
             tab[player_pos[0], player_pos[1]] = '~'
             player_pos[0] += 1
             if tab[player_pos[0], player_pos[1]] == 'I':
@@ -59,7 +59,7 @@ def intro_level():
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
             tab[player_pos[0], player_pos[1]] = spawn_point
-        elif move == 'left' and player_pos[1] > 1:
+        elif (move == 'left' or move == 'a') and player_pos[1] > 1:
             tab[player_pos[0], player_pos[1]] = '~'
             player_pos[1] -= 1
             if tab[player_pos[0], player_pos[1]] == 'I':
@@ -67,7 +67,7 @@ def intro_level():
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
             tab[player_pos[0], player_pos[1]] = spawn_point
-        elif move == 'right' and player_pos[1] < 8:
+        elif (move == 'right' or move == 'd') and player_pos[1] < 8:
             tab[player_pos[0], player_pos[1]] = '~'
             player_pos[1] += 1
             if tab[player_pos[0], player_pos[1]] == 'I':
