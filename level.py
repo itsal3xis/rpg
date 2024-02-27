@@ -1,52 +1,85 @@
-from random import randint
-from random import choice
+from random import randint, choice
 import numpy as np
 
+items = []
+
 def intro_level():
+    global items  # Declare 'items' as a global variable inside the function
+    print("Welcome to the Dungeon Adventure Game!")
+    print("You find yourself in a dark dungeon filled with mysteries and dangers.")
+    print("Your objective is to navigate through the dungeon, collect treasures, defeat monsters, and ultimately defeat the final boss.")
+    print("Here's your starting map:")
 
-    char = '~'
+    # Generating the initial map
+    char = '.'
+    tab = np.array(([char] * 100))
+    tab = np.reshape(tab, (10, 10))
 
-    tab = np.array(([char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,        #Basic Map / Maybe fixed
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char,
-                    char,char,char,char,char,char,char,char,char,char]))
-    tab = np.reshape(tab, (10,10))
-
-
-    walls = 'X'
+    # Adding walls
+    walls = '~'
     for i in range(10):
-        tab[0,i] = walls
-        tab[i,0] = walls
-        tab[9,i] = walls
-        tab[i,9] = walls
+        tab[0, i] = walls
+        tab[i, 0] = walls
+        tab[9, i] = walls
+        tab[i, 9] = walls
 
-    items = 'I'
-    tab[randint(1, 8), randint(1, 8)] = items
-    tab[randint(1, 8), randint(1, 8)] = items
+    # Adding items to the global 'items' list
+    item = 'I'
+    tab[randint(1, 8), randint(1, 8)] = item
+    tab[randint(1, 8), randint(1, 8)] = item
 
-    posItems = (np.where(tab == "I"))
-
+    # Placing the player
     spawn_point = 'P'
-    tab[randint(1,8), randint(1,8)] = spawn_point  #Maybe fixed for intro ?
+    player_pos = [randint(1, 8), randint(1, 8)]
+    tab[player_pos[0], player_pos[1]] = spawn_point
 
-    posPlayer = (np.where(tab == 'P'))
-
+    # Placing the boss
     boss = 'B'
     tab[randint(1, 8), randint(1, 8)] = boss
 
-    posBoss = (np.where(tab == 'B'))
-
+    # Displaying the map
     print(tab)
 
+    # Player control loop
+    while True:
+        move = input("Enter your move (up, down, left, right): ").lower()
+        if move == 'up' and player_pos[0] > 1:
+            tab[player_pos[0], player_pos[1]] = '~'
+            player_pos[0] -= 1
+            if tab[player_pos[0], player_pos[1]] == 'I':
+                print("You found an item!")
+                items.append(choice(['Sword', 'Shield', 'Potion']))
+                print("Your items:", items)
+            tab[player_pos[0], player_pos[1]] = spawn_point
+        elif move == 'down' and player_pos[0] < 8:
+            tab[player_pos[0], player_pos[1]] = '~'
+            player_pos[0] += 1
+            if tab[player_pos[0], player_pos[1]] == 'I':
+                print("You found an item!")
+                items.append(choice(['Sword', 'Shield', 'Potion']))
+                print("Your items:", items)
+            tab[player_pos[0], player_pos[1]] = spawn_point
+        elif move == 'left' and player_pos[1] > 1:
+            tab[player_pos[0], player_pos[1]] = '~'
+            player_pos[1] -= 1
+            if tab[player_pos[0], player_pos[1]] == 'I':
+                print("You found an item!")
+                items.append(choice(['Sword', 'Shield', 'Potion']))
+                print("Your items:", items)
+            tab[player_pos[0], player_pos[1]] = spawn_point
+        elif move == 'right' and player_pos[1] < 8:
+            tab[player_pos[0], player_pos[1]] = '~'
+            player_pos[1] += 1
+            if tab[player_pos[0], player_pos[1]] == 'I':
+                print("You found an item!")
+                items.append(choice(['Sword', 'Shield', 'Potion']))
+                print("Your items:", items)
+            tab[player_pos[0], player_pos[1]] = spawn_point
+        else:
+            print("Invalid move. Try again.")
+            continue
+
+        print(tab)
 
 
-
-intro_level()   #Remove after completion ----------------------------------------------------------------------------------------
-                #Description github add CLI--------------------------------------------------------------------------------------
-                #Add dialogue in the intro --------------------------------------------------------------------------------------
+intro_level()
