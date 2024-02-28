@@ -1,8 +1,8 @@
 from random import randint, choice
 import numpy as np
+import battle
 
 items = []
-
 def intro_level():
     global items  # Declare 'items' as a global variable inside the function
     print("Welcome to the Dungeon Adventure Game!")
@@ -50,6 +50,9 @@ def intro_level():
                 print("You found an item!")
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
+            if tab[player_pos[0], player_pos[1]] == 'B':
+                battle.intro_battle()
+                break
             tab[player_pos[0], player_pos[1]] = spawn_point
         elif (move == 'down' or move == 's') and player_pos[0] < 8:
             tab[player_pos[0], player_pos[1]] = '~'
@@ -58,6 +61,9 @@ def intro_level():
                 print("You found an item!")
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
+            if tab[player_pos[0], player_pos[1]] == 'B':
+                battle.intro_battle()
+                break
             tab[player_pos[0], player_pos[1]] = spawn_point
         elif (move == 'left' or move == 'a') and player_pos[1] > 1:
             tab[player_pos[0], player_pos[1]] = '~'
@@ -66,6 +72,9 @@ def intro_level():
                 print("You found an item!")
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
+            if tab[player_pos[0], player_pos[1]] == 'B':
+                battle.intro_battle()
+                break
             tab[player_pos[0], player_pos[1]] = spawn_point
         elif (move == 'right' or move == 'd') and player_pos[1] < 8:
             tab[player_pos[0], player_pos[1]] = '~'
@@ -74,7 +83,11 @@ def intro_level():
                 print("You found an item!")
                 items.append(choice(['Sword', 'Shield', 'Potion']))
                 print("Your items:", items)
+            if tab[player_pos[0], player_pos[1]] == 'B':
+                battle.intro_battle()
+                break
             tab[player_pos[0], player_pos[1]] = spawn_point
+
         else:
             print("Invalid move. Try again.")
             continue
