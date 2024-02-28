@@ -1,10 +1,19 @@
 import random
 
-def intro_battle(name, boost):
+def intro_battle():
     #Tutorial for the battle
-    bossHp = 100
-    bossName = 'Boss'
-    bossAtk = 15
-    bossAbilities = ['Poison', 'Bad Omen']
-    
+    class Boss:
+        name = 'Boss'
+        atk = 5
+        type = 'Poison'
+        rarity = 'Basic'
+        hp = 25
+
+    bossintro = Boss
+
+    print(f"Player vs {bossintro.name}")
+
+print("Test")
+
+
 
