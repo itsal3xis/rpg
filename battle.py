@@ -13,7 +13,6 @@ def intro_battle():
 
     print(f"Player vs {bossintro.name}")
 
-print("Test")
 
 
 

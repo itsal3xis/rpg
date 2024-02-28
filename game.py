@@ -2,7 +2,6 @@ from random import randint
 import time
 import os
 import level
-import battle
 def cha():
     random_cha = int(input("Do you want to create a random character ? >\n1: Yes\n2: No, create your own\n>  "))
 

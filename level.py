@@ -7,7 +7,8 @@ def intro_level():
     global items  # Declare 'items' as a global variable inside the function
     print("Welcome to the Dungeon Adventure Game!")
     print("You find yourself in a dark dungeon filled with mysteries and dangers.")
-    print("Your objective is to navigate through the dungeon, collect treasures, defeat monsters, and ultimately defeat the final boss.")
+    print("Your objective is to navigate through the dungeon, collect treasures, defeat monsters, "
+          "and ultimately defeat the final boss.")
     print("Here's your starting map:")
 
     # Generating the initial map
@@ -94,5 +95,3 @@ def intro_level():
 
         print(tab)
 
-
-intro_level()
