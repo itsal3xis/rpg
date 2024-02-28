@@ -2,6 +2,7 @@ from random import randint
 import time
 import os
 import level
+import battle
 def cha():
     random_cha = int(input("Do you want to create a random character ? >\n1: Yes\n2: No, create your own\n>  "))
 
@@ -9,7 +10,7 @@ def cha():
         random_cha = int(input("Select a valid option > "))
 
     if random_cha == 1:
-        #Create a random name generator       (Future)
+        #Create a random name generator (Future)
         name = "Player"
         choice = randint(1,3)
         if choice == 1:
