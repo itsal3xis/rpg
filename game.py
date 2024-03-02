@@ -24,7 +24,7 @@ def cha():
     print("\n\n\n\n\nLets start by writing your name !\n")
     name = str(input(">  "))
 
-    invalid_car = ["!", "@", "#", "$", "%", "?", '&', '*', '(' , ')', '_', '=', '+', ':', ';', '"']
+    invalid_car = ["!", "@", "#", "$", "%", "?", '&', '*', '(', ')', '_', '=', '+', ':', ';', '"']
 
     for letter in name:
         if letter in invalid_car:
